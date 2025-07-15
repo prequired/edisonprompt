@@ -177,7 +177,7 @@ _arguments "${_arguments_options[@]}" : \
 '--no-color[Disable colored output]' \
 '-h[Print help]' \
 '--help[Print help]' \
-':shell -- Shell type:(bash zsh fish power-shell)' \
+':shell -- Shell type:(bash zsh fish powershell)' \
 && ret=0
 ;;
 (help)

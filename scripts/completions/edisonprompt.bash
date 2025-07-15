@@ -135,7 +135,7 @@ _edisonprompt() {
             return 0
             ;;
         edisonprompt__completions)
-            opts="-v -c -h --verbose --config --no-color --help bash zsh fish power-shell"
+            opts="-v -c -h --verbose --config --no-color --help bash zsh fish powershell"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
