@@ -118,23 +118,36 @@ services:
 ## 🔧 Post-Installation Setup
 
 ### Shell Completions
+
+EdisonPrompt provides comprehensive shell completions for enhanced CLI experience:
+
 ```bash
 # Bash
+mkdir -p ~/.bash_completion.d
 edisonprompt completions bash > ~/.bash_completion.d/edisonprompt
 source ~/.bash_completion.d/edisonprompt
 
 # Zsh
 mkdir -p ~/.zsh/completions
 edisonprompt completions zsh > ~/.zsh/completions/_edisonprompt
-# Add to ~/.zshrc: fpath=(~/.zsh/completions $fpath)
+echo 'fpath=(~/.zsh/completions $fpath)' >> ~/.zshrc
+echo 'autoload -U compinit && compinit' >> ~/.zshrc
 
 # Fish
 edisonprompt completions fish > ~/.config/fish/completions/edisonprompt.fish
 
 # PowerShell
-edisonprompt completions powershell > edisonprompt.ps1
-# Import in PowerShell profile
+edisonprompt completions powershell >> $PROFILE
 ```
+
+**Features included:**
+- ✅ Command and subcommand completion
+- ✅ Option flags and arguments
+- ✅ Value completion for enums (formats, shells, etc.)
+- ✅ File path completion
+- ✅ Context-aware suggestions
+
+For detailed completion setup and troubleshooting, see [SHELL-COMPLETIONS.md](SHELL-COMPLETIONS.md).
 
 ### Configuration
 ```bash
@@ -380,12 +393,14 @@ cp ~/.config/edisonprompt/config.toml config-backup.toml
 
 After installation:
 
-1. **Set up shell completions** for better UX
+1. **Set up shell completions** for better UX - see [SHELL-COMPLETIONS.md](SHELL-COMPLETIONS.md)
 2. **Configure your preferred editor** in the config
 3. **Create your first templates** following the examples
 4. **Set up regular backups** with export functionality
 5. **Explore advanced features** in the examples documentation
 
 For more detailed usage examples, see [EXAMPLES.md](EXAMPLES.md).
+
+For shell completion setup and troubleshooting, see [SHELL-COMPLETIONS.md](SHELL-COMPLETIONS.md).
 
 For development and contributing, see [CONTRIBUTING.md](CONTRIBUTING.md).

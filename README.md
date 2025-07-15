@@ -71,6 +71,33 @@ Variables can have descriptions and default values for better usability.
 - `import` - Import prompts from JSON with merge strategies
 - `completions` - Generate shell completions
 
+## Shell Completions
+
+EdisonPrompt provides comprehensive shell completions for all major shells:
+
+```bash
+# Bash
+edisonprompt completions bash > ~/.bash_completion.d/edisonprompt
+source ~/.bash_completion.d/edisonprompt
+
+# Zsh
+mkdir -p ~/.zsh/completions
+edisonprompt completions zsh > ~/.zsh/completions/_edisonprompt
+# Add to ~/.zshrc: fpath=(~/.zsh/completions $fpath)
+
+# Fish
+edisonprompt completions fish > ~/.config/fish/completions/edisonprompt.fish
+
+# PowerShell
+edisonprompt completions powershell >> $PROFILE
+```
+
+Completions include:
+- ✅ All commands and subcommands
+- ✅ Option flags and arguments
+- ✅ Value completion for enums (formats, shells, etc.)
+- ✅ Context-aware suggestions
+
 ## Configuration
 
 Configuration file location: `~/.config/edisonprompt/config.toml`
