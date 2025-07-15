@@ -2,12 +2,12 @@
 using namespace System.Management.Automation
 using namespace System.Management.Automation.Language
 
-Register-ArgumentCompleter -Native -CommandName 'promptedo' -ScriptBlock {
+Register-ArgumentCompleter -Native -CommandName 'edisonprompt' -ScriptBlock {
     param($wordToComplete, $commandAst, $cursorPosition)
 
     $commandElements = $commandAst.CommandElements
     $command = @(
-        'promptedo'
+        'edisonprompt'
         for ($i = 1; $i -lt $commandElements.Count; $i++) {
             $element = $commandElements[$i]
             if ($element -isnot [StringConstantExpressionAst] -or
@@ -20,7 +20,7 @@ Register-ArgumentCompleter -Native -CommandName 'promptedo' -ScriptBlock {
     }) -join ';'
 
     $completions = @(switch ($command) {
-        'promptedo' {
+        'edisonprompt' {
             [CompletionResult]::new('-c', '-c', [CompletionResultType]::ParameterName, 'Specify custom config file path')
             [CompletionResult]::new('--config', '--config', [CompletionResultType]::ParameterName, 'Specify custom config file path')
             [CompletionResult]::new('-v', '-v', [CompletionResultType]::ParameterName, 'Enable verbose output')
@@ -42,7 +42,7 @@ Register-ArgumentCompleter -Native -CommandName 'promptedo' -ScriptBlock {
             [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
             break
         }
-        'promptedo;add' {
+        'edisonprompt;add' {
             [CompletionResult]::new('-t', '-t', [CompletionResultType]::ParameterName, 'Add tags to the prompt')
             [CompletionResult]::new('--tags', '--tags', [CompletionResultType]::ParameterName, 'Add tags to the prompt')
             [CompletionResult]::new('-c', '-c', [CompletionResultType]::ParameterName, 'Specify custom config file path')
@@ -58,7 +58,7 @@ Register-ArgumentCompleter -Native -CommandName 'promptedo' -ScriptBlock {
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'promptedo;get' {
+        'edisonprompt;get' {
             [CompletionResult]::new('--var', '--var', [CompletionResultType]::ParameterName, 'Variable values in key=value format')
             [CompletionResult]::new('-c', '-c', [CompletionResultType]::ParameterName, 'Specify custom config file path')
             [CompletionResult]::new('--config', '--config', [CompletionResultType]::ParameterName, 'Specify custom config file path')
@@ -73,7 +73,7 @@ Register-ArgumentCompleter -Native -CommandName 'promptedo' -ScriptBlock {
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'promptedo;list' {
+        'edisonprompt;list' {
             [CompletionResult]::new('-t', '-t', [CompletionResultType]::ParameterName, 'Filter by tag')
             [CompletionResult]::new('--tag', '--tag', [CompletionResultType]::ParameterName, 'Filter by tag')
             [CompletionResult]::new('-f', '-f', [CompletionResultType]::ParameterName, 'Output format')
@@ -92,7 +92,7 @@ Register-ArgumentCompleter -Native -CommandName 'promptedo' -ScriptBlock {
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'promptedo;search' {
+        'edisonprompt;search' {
             [CompletionResult]::new('-l', '-l', [CompletionResultType]::ParameterName, 'Limit number of results')
             [CompletionResult]::new('--limit', '--limit', [CompletionResultType]::ParameterName, 'Limit number of results')
             [CompletionResult]::new('-f', '-f', [CompletionResultType]::ParameterName, 'Output format')
@@ -107,7 +107,7 @@ Register-ArgumentCompleter -Native -CommandName 'promptedo' -ScriptBlock {
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'promptedo;edit' {
+        'edisonprompt;edit' {
             [CompletionResult]::new('-c', '-c', [CompletionResultType]::ParameterName, 'Specify custom config file path')
             [CompletionResult]::new('--config', '--config', [CompletionResultType]::ParameterName, 'Specify custom config file path')
             [CompletionResult]::new('-y', '-y', [CompletionResultType]::ParameterName, 'Skip confirmation prompt')
@@ -119,7 +119,7 @@ Register-ArgumentCompleter -Native -CommandName 'promptedo' -ScriptBlock {
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'promptedo;delete' {
+        'edisonprompt;delete' {
             [CompletionResult]::new('-c', '-c', [CompletionResultType]::ParameterName, 'Specify custom config file path')
             [CompletionResult]::new('--config', '--config', [CompletionResultType]::ParameterName, 'Specify custom config file path')
             [CompletionResult]::new('-y', '-y', [CompletionResultType]::ParameterName, 'Skip confirmation prompt')
@@ -133,7 +133,7 @@ Register-ArgumentCompleter -Native -CommandName 'promptedo' -ScriptBlock {
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'promptedo;export' {
+        'edisonprompt;export' {
             [CompletionResult]::new('-o', '-o', [CompletionResultType]::ParameterName, 'Output file path (stdout if not specified)')
             [CompletionResult]::new('--output', '--output', [CompletionResultType]::ParameterName, 'Output file path (stdout if not specified)')
             [CompletionResult]::new('-t', '-t', [CompletionResultType]::ParameterName, 'Filter by tag')
@@ -149,7 +149,7 @@ Register-ArgumentCompleter -Native -CommandName 'promptedo' -ScriptBlock {
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'promptedo;import' {
+        'edisonprompt;import' {
             [CompletionResult]::new('-i', '-i', [CompletionResultType]::ParameterName, 'Input file path (stdin if not specified)')
             [CompletionResult]::new('--input', '--input', [CompletionResultType]::ParameterName, 'Input file path (stdin if not specified)')
             [CompletionResult]::new('-m', '-m', [CompletionResultType]::ParameterName, 'Merge strategy for existing prompts')
@@ -164,7 +164,7 @@ Register-ArgumentCompleter -Native -CommandName 'promptedo' -ScriptBlock {
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'promptedo;completions' {
+        'edisonprompt;completions' {
             [CompletionResult]::new('-c', '-c', [CompletionResultType]::ParameterName, 'Specify custom config file path')
             [CompletionResult]::new('--config', '--config', [CompletionResultType]::ParameterName, 'Specify custom config file path')
             [CompletionResult]::new('-v', '-v', [CompletionResultType]::ParameterName, 'Enable verbose output')
@@ -174,7 +174,7 @@ Register-ArgumentCompleter -Native -CommandName 'promptedo' -ScriptBlock {
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'promptedo;help' {
+        'edisonprompt;help' {
             [CompletionResult]::new('add', 'add', [CompletionResultType]::ParameterValue, 'Add a new prompt from clipboard or input')
             [CompletionResult]::new('get', 'get', [CompletionResultType]::ParameterValue, 'Retrieve and render a prompt with variables')
             [CompletionResult]::new('list', 'list', [CompletionResultType]::ParameterValue, 'List prompts with optional filtering')
@@ -187,34 +187,34 @@ Register-ArgumentCompleter -Native -CommandName 'promptedo' -ScriptBlock {
             [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
             break
         }
-        'promptedo;help;add' {
+        'edisonprompt;help;add' {
             break
         }
-        'promptedo;help;get' {
+        'edisonprompt;help;get' {
             break
         }
-        'promptedo;help;list' {
+        'edisonprompt;help;list' {
             break
         }
-        'promptedo;help;search' {
+        'edisonprompt;help;search' {
             break
         }
-        'promptedo;help;edit' {
+        'edisonprompt;help;edit' {
             break
         }
-        'promptedo;help;delete' {
+        'edisonprompt;help;delete' {
             break
         }
-        'promptedo;help;export' {
+        'edisonprompt;help;export' {
             break
         }
-        'promptedo;help;import' {
+        'edisonprompt;help;import' {
             break
         }
-        'promptedo;help;completions' {
+        'edisonprompt;help;completions' {
             break
         }
-        'promptedo;help;help' {
+        'edisonprompt;help;help' {
             break
         }
     })

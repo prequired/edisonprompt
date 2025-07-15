@@ -1,8 +1,8 @@
-#compdef promptedo
+#compdef edisonprompt
 
 autoload -U is-at-least
 
-_promptedo() {
+_edisonprompt() {
     typeset -A opt_args
     typeset -a _arguments_options
     local ret=1
@@ -24,14 +24,14 @@ _promptedo() {
 '--help[Print help (see more with '\''--help'\'')]' \
 '-V[Print version]' \
 '--version[Print version]' \
-":: :_promptedo_commands" \
-"*::: :->promptedo" \
+":: :_edisonprompt_commands" \
+"*::: :->edisonprompt" \
 && ret=0
     case $state in
-    (promptedo)
+    (edisonprompt)
         words=($line[1] "${words[@]}")
         (( CURRENT += 1 ))
-        curcontext="${curcontext%:*:*}:promptedo-command-$line[1]:"
+        curcontext="${curcontext%:*:*}:edisonprompt-command-$line[1]:"
         case $line[1] in
             (add)
 _arguments "${_arguments_options[@]}" : \
@@ -182,7 +182,7 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (help)
 _arguments "${_arguments_options[@]}" : \
-":: :_promptedo__help_commands" \
+":: :_edisonprompt__help_commands" \
 "*::: :->help" \
 && ret=0
 
@@ -190,7 +190,7 @@ _arguments "${_arguments_options[@]}" : \
     (help)
         words=($line[1] "${words[@]}")
         (( CURRENT += 1 ))
-        curcontext="${curcontext%:*:*}:promptedo-help-command-$line[1]:"
+        curcontext="${curcontext%:*:*}:edisonprompt-help-command-$line[1]:"
         case $line[1] in
             (add)
 _arguments "${_arguments_options[@]}" : \
@@ -241,8 +241,8 @@ esac
 esac
 }
 
-(( $+functions[_promptedo_commands] )) ||
-_promptedo_commands() {
+(( $+functions[_edisonprompt_commands] )) ||
+_edisonprompt_commands() {
     local commands; commands=(
 'add:Add a new prompt from clipboard or input' \
 'get:Retrieve and render a prompt with variables' \
@@ -255,40 +255,40 @@ _promptedo_commands() {
 'completions:Generate shell completions' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
-    _describe -t commands 'promptedo commands' commands "$@"
+    _describe -t commands 'edisonprompt commands' commands "$@"
 }
-(( $+functions[_promptedo__add_commands] )) ||
-_promptedo__add_commands() {
+(( $+functions[_edisonprompt__add_commands] )) ||
+_edisonprompt__add_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo add commands' commands "$@"
+    _describe -t commands 'edisonprompt add commands' commands "$@"
 }
-(( $+functions[_promptedo__completions_commands] )) ||
-_promptedo__completions_commands() {
+(( $+functions[_edisonprompt__completions_commands] )) ||
+_edisonprompt__completions_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo completions commands' commands "$@"
+    _describe -t commands 'edisonprompt completions commands' commands "$@"
 }
-(( $+functions[_promptedo__delete_commands] )) ||
-_promptedo__delete_commands() {
+(( $+functions[_edisonprompt__delete_commands] )) ||
+_edisonprompt__delete_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo delete commands' commands "$@"
+    _describe -t commands 'edisonprompt delete commands' commands "$@"
 }
-(( $+functions[_promptedo__edit_commands] )) ||
-_promptedo__edit_commands() {
+(( $+functions[_edisonprompt__edit_commands] )) ||
+_edisonprompt__edit_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo edit commands' commands "$@"
+    _describe -t commands 'edisonprompt edit commands' commands "$@"
 }
-(( $+functions[_promptedo__export_commands] )) ||
-_promptedo__export_commands() {
+(( $+functions[_edisonprompt__export_commands] )) ||
+_edisonprompt__export_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo export commands' commands "$@"
+    _describe -t commands 'edisonprompt export commands' commands "$@"
 }
-(( $+functions[_promptedo__get_commands] )) ||
-_promptedo__get_commands() {
+(( $+functions[_edisonprompt__get_commands] )) ||
+_edisonprompt__get_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo get commands' commands "$@"
+    _describe -t commands 'edisonprompt get commands' commands "$@"
 }
-(( $+functions[_promptedo__help_commands] )) ||
-_promptedo__help_commands() {
+(( $+functions[_edisonprompt__help_commands] )) ||
+_edisonprompt__help_commands() {
     local commands; commands=(
 'add:Add a new prompt from clipboard or input' \
 'get:Retrieve and render a prompt with variables' \
@@ -301,76 +301,76 @@ _promptedo__help_commands() {
 'completions:Generate shell completions' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
-    _describe -t commands 'promptedo help commands' commands "$@"
+    _describe -t commands 'edisonprompt help commands' commands "$@"
 }
-(( $+functions[_promptedo__help__add_commands] )) ||
-_promptedo__help__add_commands() {
+(( $+functions[_edisonprompt__help__add_commands] )) ||
+_edisonprompt__help__add_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo help add commands' commands "$@"
+    _describe -t commands 'edisonprompt help add commands' commands "$@"
 }
-(( $+functions[_promptedo__help__completions_commands] )) ||
-_promptedo__help__completions_commands() {
+(( $+functions[_edisonprompt__help__completions_commands] )) ||
+_edisonprompt__help__completions_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo help completions commands' commands "$@"
+    _describe -t commands 'edisonprompt help completions commands' commands "$@"
 }
-(( $+functions[_promptedo__help__delete_commands] )) ||
-_promptedo__help__delete_commands() {
+(( $+functions[_edisonprompt__help__delete_commands] )) ||
+_edisonprompt__help__delete_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo help delete commands' commands "$@"
+    _describe -t commands 'edisonprompt help delete commands' commands "$@"
 }
-(( $+functions[_promptedo__help__edit_commands] )) ||
-_promptedo__help__edit_commands() {
+(( $+functions[_edisonprompt__help__edit_commands] )) ||
+_edisonprompt__help__edit_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo help edit commands' commands "$@"
+    _describe -t commands 'edisonprompt help edit commands' commands "$@"
 }
-(( $+functions[_promptedo__help__export_commands] )) ||
-_promptedo__help__export_commands() {
+(( $+functions[_edisonprompt__help__export_commands] )) ||
+_edisonprompt__help__export_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo help export commands' commands "$@"
+    _describe -t commands 'edisonprompt help export commands' commands "$@"
 }
-(( $+functions[_promptedo__help__get_commands] )) ||
-_promptedo__help__get_commands() {
+(( $+functions[_edisonprompt__help__get_commands] )) ||
+_edisonprompt__help__get_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo help get commands' commands "$@"
+    _describe -t commands 'edisonprompt help get commands' commands "$@"
 }
-(( $+functions[_promptedo__help__help_commands] )) ||
-_promptedo__help__help_commands() {
+(( $+functions[_edisonprompt__help__help_commands] )) ||
+_edisonprompt__help__help_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo help help commands' commands "$@"
+    _describe -t commands 'edisonprompt help help commands' commands "$@"
 }
-(( $+functions[_promptedo__help__import_commands] )) ||
-_promptedo__help__import_commands() {
+(( $+functions[_edisonprompt__help__import_commands] )) ||
+_edisonprompt__help__import_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo help import commands' commands "$@"
+    _describe -t commands 'edisonprompt help import commands' commands "$@"
 }
-(( $+functions[_promptedo__help__list_commands] )) ||
-_promptedo__help__list_commands() {
+(( $+functions[_edisonprompt__help__list_commands] )) ||
+_edisonprompt__help__list_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo help list commands' commands "$@"
+    _describe -t commands 'edisonprompt help list commands' commands "$@"
 }
-(( $+functions[_promptedo__help__search_commands] )) ||
-_promptedo__help__search_commands() {
+(( $+functions[_edisonprompt__help__search_commands] )) ||
+_edisonprompt__help__search_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo help search commands' commands "$@"
+    _describe -t commands 'edisonprompt help search commands' commands "$@"
 }
-(( $+functions[_promptedo__import_commands] )) ||
-_promptedo__import_commands() {
+(( $+functions[_edisonprompt__import_commands] )) ||
+_edisonprompt__import_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo import commands' commands "$@"
+    _describe -t commands 'edisonprompt import commands' commands "$@"
 }
-(( $+functions[_promptedo__list_commands] )) ||
-_promptedo__list_commands() {
+(( $+functions[_edisonprompt__list_commands] )) ||
+_edisonprompt__list_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo list commands' commands "$@"
+    _describe -t commands 'edisonprompt list commands' commands "$@"
 }
-(( $+functions[_promptedo__search_commands] )) ||
-_promptedo__search_commands() {
+(( $+functions[_edisonprompt__search_commands] )) ||
+_edisonprompt__search_commands() {
     local commands; commands=()
-    _describe -t commands 'promptedo search commands' commands "$@"
+    _describe -t commands 'edisonprompt search commands' commands "$@"
 }
 
-if [ "$funcstack[1]" = "_promptedo" ]; then
-    _promptedo "$@"
+if [ "$funcstack[1]" = "_edisonprompt" ]; then
+    _edisonprompt "$@"
 else
-    compdef _promptedo promptedo
+    compdef _edisonprompt edisonprompt
 fi

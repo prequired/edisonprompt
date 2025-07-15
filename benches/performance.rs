@@ -1,5 +1,5 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use promptedo::{Database, TemplateEngine};
+use edisonprompt::{Database, TemplateEngine};
 use tempfile::TempDir;
 use std::collections::HashMap;
 
@@ -19,7 +19,7 @@ fn benchmark_search(c: &mut Criterion) {
     
     // Add 1000 test prompts
     for i in 0..1000 {
-        let prompt = promptedo::database::models::Prompt::new(
+        let prompt = edisonprompt::database::models::Prompt::new(
             format!("test-prompt-{}", i),
             format!("This is test content number {} for searching", i),
         );
