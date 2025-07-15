@@ -1,0 +1,74 @@
+[package]
+name = "edisonprompt"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+description = "Lightning-fast AI prompt management CLI with template variables and local-first architecture"
+license = "MIT"
+repository = "https://github.com/prequired/edisonprompt"
+homepage = "https://github.com/prequired/edisonprompt"
+documentation = "https://docs.rs/edisonprompt"
+keywords = ["cli", "ai", "prompts", "templates", "productivity"]
+categories = ["command-line-utilities", "development-tools"]
+authors = ["@prequired"]
+readme = "README.md"
+exclude = ["tests/fixtures/*", "scripts/*", "docs/*"]
+
+[[bin]]
+name = "edisonprompt"
+path = "src/main.rs"
+
+[dependencies]
+# CLI Framework - EXACT VERSION REQUIRED
+clap = { version = "4.4.18", features = ["derive", "env", "unicode", "wrap_help"] }
+
+# Database - EXACT VERSION REQUIRED  
+rusqlite = { version = "0.30.0", features = ["bundled", "chrono", "serde_json", "uuid"] }
+
+# Template Engine - EXACT VERSION REQUIRED
+handlebars = { version = "5.1.0", default-features = false, features = ["string_helpers"] }
+
+# Clipboard - EXACT VERSION REQUIRED
+arboard = { version = "3.3.0", default-features = false }
+
+# Serialization - EXACT VERSION REQUIRED
+serde = { version = "1.0.195", features = ["derive"] }
+serde_json = { version = "1.0.111" }
+toml = { version = "0.8.8", features = ["preserve_order"] }
+
+# Error Handling - EXACT VERSION REQUIRED
+thiserror = "1.0.56"
+anyhow = "1.0.79"
+
+# Utilities - EXACT VERSION REQUIRED
+uuid = { version = "1.7.0", features = ["v4", "serde"] }
+chrono = { version = "0.4.31", features = ["serde"] }
+directories = "5.0.1"
+colored = "2.1.0"
+regex = "1.10.2"
+
+# Additional Dependencies
+clap_complete = "4.4.18"
+tempfile = "3.8.1"
+dirs = "5.0.1"
+
+# Optional Dependencies
+inquire = { version = "0.7.0", optional = true }
+indicatif = { version = "0.17.7", optional = true }
+
+[dev-dependencies]
+# Testing - EXACT VERSION REQUIRED
+criterion = { version = "0.5.1", features = ["html_reports"] }
+tempfile = "3.8.1"
+assert_cmd = "2.0.13"
+predicates = "3.0.4"
+tokio-test = "0.4.3"
+
+[features]
+default = ["interactive", "progress"]
+interactive = ["dep:inquire"]
+progress = ["dep:indicatif"]
+
+[[bench]]
+name = "performance"
+harness = false

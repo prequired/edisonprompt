@@ -1,0 +1,12 @@
+# Rust gitignore
+target/
+debug/
+**/*.rs.bk
+*.pdb
+.DS_Store
+.idea/
+.vscode/
+
+# Project specific
+CLAUDE.md
+LAUNCH.md
